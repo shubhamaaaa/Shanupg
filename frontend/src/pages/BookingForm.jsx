@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
 
 const BookingForm = () => {
-  
+   const {backendUrl}=useContext(ShopContext)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -40,7 +42,7 @@ const BookingForm = () => {
     });
   
     try {
-      const response = await fetch("http://localhost:3000/api/bookings/submit", {
+      const response = await fetch(backendUrl+"/api/bookings/submit", {
         method: "POST",
         body: formDataToSend,
       });

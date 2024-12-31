@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { backendUrl } from '../App';
 
 const List = () => {
   const [list, setList] = useState([]);
 
   const fetchlist = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/product/list');
+      const response = await axios.get(backendUrl+'/api/product/list');
       if (response.data.success) {
         setList(response.data.products);
       } else {
@@ -21,7 +22,7 @@ const List = () => {
 
   const removeProduct = async (id) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/product/remove', { id });
+      const response = await axios.post(backendUrl+'/api/product/remove', { id });
       if (response.data.success) {
         toast.success(response.data.message);
         await fetchlist();

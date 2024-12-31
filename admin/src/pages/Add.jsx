@@ -3,6 +3,7 @@ import { assets } from '../assets/assets';
 import axios from 'axios'
 
 import { toast } from 'react-toastify';
+import { backendUrl } from '../App';
 
 
 const Add = () => {
@@ -37,7 +38,7 @@ const Add = () => {
       image4 && formData.append("image4",image4)
       image5 && formData.append("image5",image5)
 
-      const response=await axios.post("http://localhost:3000/api/product/add",formData)
+      const response=await axios.post(backendUrl+"/api/product/add",formData)
       if (response.data.success) {
         toast.success(response.data.message)
         setName('')

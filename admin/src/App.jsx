@@ -7,7 +7,7 @@ import List from './pages/List'
 import AdminBookings from './pages/AdminBookings'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+export const backendUrl=import.meta.env.VITE_BACKEND_URL
 const App = () => {
   return (
     <div className='flex items-center min-h-screen bg-[#F3FFF7]'>

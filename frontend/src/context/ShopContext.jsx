@@ -12,11 +12,11 @@ export const ShopContext=createContext();
 
 const ShopContextProvider=(props)=>{
     const [products,setProducts]=useState([])
-
+    const backendUrl=import.meta.env.VITE_BACKEND_URL
 
     const getProductsData=async()=>{
         try {
-            const response=await axios.get("http://localhost:3000/api/product/list")
+            const response=await axios.get(backendUrl +"/api/product/list")
            if (response.data.success) {
             setProducts(response.data.products)
            }else{
@@ -36,7 +36,7 @@ const ShopContextProvider=(props)=>{
 
 
     const value={
-        products,
+        products,backendUrl
     }
 
 

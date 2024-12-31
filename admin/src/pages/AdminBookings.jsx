@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { backendUrl } from "../App";
 
 const AdminBookings = () => {
     const [bookings, setBookings] = useState([]);
@@ -8,7 +9,7 @@ const AdminBookings = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/bookings/get");
+                const response = await fetch(backendUrl +"/api/bookings/get");
                 const result = await response.json();
                 if (result.success) {
                     setBookings(result.data); // Updated data access
